@@ -1,0 +1,60 @@
+# ==============================================================================
+# Git Ignore - HRMS Project (Frontend & Backend)
+# ==============================================================================
+
+# --- Node / Frontend Dependencies & Build ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+build/
+dist/
+
+# --- Python / Backend Virtual Environments & Caches ---
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Environment Variables & Secrets (NEVER COMMIT) ---
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+HR-Backend/.env
+
+# --- Local Uploaded Candidate Files & Media ---
+HR-Backend/uploads/*
+!HR-Backend/uploads/.gitkeep
+!HR-Backend/uploads/aadhar/.gitkeep
+!HR-Backend/uploads/pan/.gitkeep
+!HR-Backend/uploads/photos/.gitkeep
+!HR-Backend/uploads/resumes/.gitkeep
+!HR-Backend/uploads/sslc/.gitkeep
+
+# --- Deployment Archives & Zip Files ---
+*.zip
+*.tar.gz
+*.rar
+backend_deploy.zip
+frontend_build.zip
+
+# --- Log Files ---
+*.log
+HR-Backend/*.log
+requests.log
+backend.log
+
+# --- IDE & OS Cache Files ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
