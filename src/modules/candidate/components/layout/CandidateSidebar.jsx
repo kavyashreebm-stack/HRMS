@@ -2,12 +2,17 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../../../assets/images/AE_Logo.png";
 import {
-  HomeIcon, UserIcon, FileIcon,
+  HomeIcon,
+  UserIcon,
+  FileIcon,
   LogoutIcon
 } from "../../../../assets/icons/AllIcons";
-import { ArrowLeft, Users } from "lucide-react";
 
-export default function CandidateSidebar({ activeTab, setActiveTab, isHRMode = false }) {
+export default function CandidateSidebar({
+  activeTab,
+  setActiveTab,
+  isHRMode = false
+}) {
   const navigate = useNavigate();
 
   const menuItem = (id, Icon, label) => (
@@ -32,10 +37,14 @@ export default function CandidateSidebar({ activeTab, setActiveTab, isHRMode = f
   return (
     <aside className="w-60 bg-white dark:bg-gray-900 h-screen flex flex-col shadow-sm sticky top-0">
 
-      {/* Logo Section — click to go to landing page */}
+      {/* Logo Section */}
       <div className="bg-red-500 p-4 border-b border-red-500">
         <button
-          onClick={() => (isHRMode ? navigate("/hr/all-profiles") : navigate("/"))}
+          onClick={() =>
+            isHRMode
+              ? navigate("/hr/all-profiles")
+              : navigate("/")
+          }
           className="bg-white rounded-lg flex items-center justify-center py-2 shadow-sm w-full hover:opacity-90 transition-opacity"
           title={isHRMode ? "Back to All Profiles" : "Go to Home"}
         >
@@ -47,28 +56,20 @@ export default function CandidateSidebar({ activeTab, setActiveTab, isHRMode = f
         </button>
       </div>
 
-      {/* Menu Section */}
-      <div className="flex flex-col flex-1 p-4 space-y-2">
+      <div className="flex flex-col flex-1 p-4">
         {menuItem("home", HomeIcon, "Home")}
-        {menuItem("profile", UserIcon, "Profile")}
-        {menuItem("application", FileIcon, "Applications")}
+        <div className="mt-2">
+          {menuItem("profile", UserIcon, "Profile")}
+        </div>
+        <div className="mt-2">
+          {menuItem("application", FileIcon, "Applications")}
+        </div>
 
-        {/* HR Back button */}
-        {isHRMode && (
-          <button
-            onClick={() => navigate("/hr/all-profiles")}
-            className="mt-auto mb-2 flex items-center gap-3 w-full text-left px-4 py-2 rounded-lg transition bg-[#0057B8] text-white hover:bg-blue-700 shadow-sm text-sm font-semibold cursor-pointer"
-          >
-            <ArrowLeft size={18} />
-            <span>All Profiles</span>
-          </button>
-        )}
-
-        {/* 🔴 Bottom Logout */}
+        {/* 🔴 Logout at bottom */}
         <button
           onClick={handleLogout}
-          className={`${isHRMode ? "" : "mt-auto"} flex items-center gap-3 w-full text-left px-4 py-2 rounded-lg transition
-                     bg-red-500 text-white hover:bg-gray-600 dark:hover:bg-gray-700 hover:text-white`}
+          className="mt-auto mb-13 flex items-center gap-3 w-full text-left px-4 py-2 rounded-lg transition
+               bg-red-500 text-white hover:bg-gray-600 dark:hover:bg-gray-700 hover:text-white"
         >
           <LogoutIcon size={22} />
           <span>Logout</span>

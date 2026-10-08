@@ -134,18 +134,18 @@ export default function CandidateLayout({
 
       {/* HR Banner if accessed from HR side */}
       {isHRMode && (
-        <div className="bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white px-6 py-2.5 flex items-center justify-between shadow-md shrink-0 z-20">
+        <div className="bg-white text-black px-6 py-2.5 flex items-center justify-between shadow-md shrink-0 z-20">
           <div className="flex items-center gap-3 text-xs sm:text-sm font-medium">
-            <span className="bg-white/20 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
+            <span className="bg-blue-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
               HR Mode
             </span>
             <span>
-              Managing Workspace for: <strong className="font-bold underline underline-offset-2">{userName}</strong>
+              Managing Workspace for: <strong className="font-bold">{userName}</strong>
             </span>
           </div>
           <button
             onClick={() => navigate("/hr/all-profiles")}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white text-blue-900 hover:bg-blue-50 font-bold text-xs rounded-xl transition-all shadow-sm cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-blue-600 text-white font-bold text-xs rounded-xl transition-all shadow-sm cursor-pointer"
           >
             <ArrowLeft size={14} />
             Back to All Profiles
@@ -173,76 +173,76 @@ export default function CandidateLayout({
               </p>
             </div>
 
-          {/* Right — Avatar with Change Password Action */}
-          <div className="relative">
+            {/* Right — Avatar with Change Password Action */}
+            <div className="relative">
 
-            {/* Clickable Avatar Button */}
-            <button
-              onClick={() => setShowDropdown((prev) => !prev)}
-              className="flex items-center gap-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-2xl px-3 py-2 transition-all duration-200"
-              aria-label="Open candidate settings"
-            >
-              {/* Photo or Initials Avatar */}
-              <div className="relative">
-                {photoSrc ? (
-                  <img
-                    src={photoSrc}
-                    alt="Profile"
-                    className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-500 ring-offset-2 shadow-md"
-                    onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }}
-                  />
-                ) : null}
-                <div
-                  className={`w-10 h-10 rounded-full bg-gradient-to-br from-[#0057B8] to-blue-400 text-white font-bold text-sm flex items-center justify-center ring-2 ring-blue-500 ring-offset-2 shadow-md ${photoSrc ? "hidden" : "flex"}`}
-                >
-                  {getInitials(userName)}
-                </div>
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full ring-2 ring-white dark:ring-gray-900"></span>
-              </div>
-
-              {/* Name & Role */}
-              <div className="hidden md:block text-left">
-                <p className="text-sm font-semibold text-gray-800 dark:text-white leading-tight">
-                  {userName || "Candidate"}
-                </p>
-                <p className="text-xs text-gray-400 dark:text-gray-500">Active Candidate</p>
-              </div>
-
-              <ChevronDown
-                size={16}
-                className={`text-gray-400 transition-transform duration-200 ${showDropdown ? "rotate-180" : ""}`}
-              />
-            </button>
-
-            {/* Settings Dropdown — only Change Password, no theme */}
-            {showDropdown && (
-              <div className="absolute right-0 top-full w-50 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl z-[9999] overflow-hidden">
-                <div className="p-1">
-                  <button
-                    onClick={() => {
-                      setShowModal(true);
-                      setShowDropdown(false);
-                    }}
-                    className="w-full flex items-center gap-4 px-1 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-xl transition-colors duration-200"
+              {/* Clickable Avatar Button */}
+              <button
+                onClick={() => setShowDropdown((prev) => !prev)}
+                className="flex items-center gap-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-2xl px-3 py-2 transition-all duration-200"
+                aria-label="Open candidate settings"
+              >
+                {/* Photo or Initials Avatar */}
+                <div className="relative">
+                  {photoSrc ? (
+                    <img
+                      src={photoSrc}
+                      alt="Profile"
+                      className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-500 ring-offset-2 shadow-md"
+                      onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }}
+                    />
+                  ) : null}
+                  <div
+                    className={`w-10 h-10 rounded-full bg-gradient-to-br from-[#0057B8] to-blue-400 text-white font-bold text-sm flex items-center justify-center ring-2 ring-blue-500 ring-offset-2 shadow-md ${photoSrc ? "hidden" : "flex"}`}
                   >
-                    <KeyRound size={16} className="text-blue-500" />
-                    Change Password
-                  </button>
+                    {getInitials(userName)}
+                  </div>
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full ring-2 ring-white dark:ring-gray-900"></span>
                 </div>
-              </div>
-            )}
 
+                {/* Name & Role */}
+                <div className="hidden md:block text-left">
+                  <p className="text-sm font-semibold text-gray-800 dark:text-white leading-tight">
+                    {userName || "Candidate"}
+                  </p>
+                  <p className="text-xs text-gray-400 dark:text-gray-500">Active Candidate</p>
+                </div>
+
+                <ChevronDown
+                  size={16}
+                  className={`text-gray-400 transition-transform duration-200 ${showDropdown ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {/* Settings Dropdown — only Change Password, no theme */}
+              {showDropdown && (
+                <div className="absolute right-0 top-full w-50 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl z-[9999] overflow-hidden">
+                  <div className="p-1">
+                    <button
+                      onClick={() => {
+                        setShowModal(true);
+                        setShowDropdown(false);
+                      }}
+                      className="w-full flex items-center gap-4 px-1 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-xl transition-colors duration-200"
+                    >
+                      <KeyRound size={16} className="text-blue-500" />
+                      Change Password
+                    </button>
+                  </div>
+                </div>
+              )}
+
+            </div>
           </div>
-        </div>
 
-        {/* Main Content */}
-        <div className="flex-1 overflow-hidden p-6">
-          {children}
+          {/* Main Content */}
+          <div className="flex-1 overflow-hidden p-6">
+            {children}
+          </div>
+
         </div>
 
       </div>
-
-    </div>
 
       {/* Change Password Modal */}
       {showModal && (
